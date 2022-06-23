@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+    <br>
+    <div class="container view">
+        <h5>{{object.kitob_nomi}}</h5>
+        <img src="{{object.kitob_muqovasi.url}}" alt="{{object.kitob_muqovasi.url}}">
+        <p> {{object.kitob_haqida | safe}}</p>
+        <p>Muallif: {{object.muallif}}</p>
+        <p>Til: {{object.til}}</p>
+        <p>Yil: {{object.yil}}</p>
+        <p>Bet: {{object.bet}}</p>
+        <p>Kitob shakli: {{object.kitob_shakli}}</p>
+        <button type="button" class="btn btn-primary"><a href="{{object.kitob_fayli.url}}" download>Yuklash</a></button>
+        <!-- (DANGER)delete function -->
+        {% if user.is_authenticated %}
+        <button type="button" class="btn btn-danger"><a href="{% url 'post_delete' object.id %}">O'chirish</a></button>
+        {% endif %}
+    </div>
+
+
+
+    <!-- ====================================================== COMMENTS SECTION ================================================-->
+<div class="container">
+    <hr>
+    <h2 id="comments">Comments</h2>
+    {% for comment in post.comment_set.all %}
+        <b>{{ comment.name }}</b> said <b>{{ comment.created_on|timesince }} ago</b>
+        <p>{{ comment.comment }}</p>
+    {% empty %}
+        <p>Feel free to leave the first comment!</p>
+    {% endfor %}
+    <hr>
+    <h3>Add a comment</h3>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <br>
+        <button type="submit" class="btn btn-secondary">Yuborish</button>
+    </form>
+</div>
+
+{% endblock content %}
+
+<!-- delete function -->
+{% if user.is_authenticated %}
+<a href="{% url 'post_delete' object.id %}">Delete</a>
+{% endif %}

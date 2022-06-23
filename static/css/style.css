@@ -1,0 +1,63 @@
+/* ============= base.html ================= */
+.signup{
+    color: white;
+    text-decoration: none;
+}
+.login{
+    color: white;
+    text-decoration: none;
+}
+.signup:hover{
+    color: white;
+}
+.login:hover{
+    color: white;
+}
+.btn{
+    margin:1 10px;
+}
+
+/* ============ home.html ===================== */
+
+.top{
+    margin-top: 5rem;
+}
+
+.image{
+    float: left;
+    margin-right: 2rem;
+}
+
+.book-view{
+    background-color: #F7F7F5;
+    border-radius: 4px;
+}
+.step-links{
+    text-align: center;
+}
+/* ================form_detail.html============== */
+
+.view img{
+    width: 100px;
+}
+/* .view p {
+    font-size: 23px;
+} */
+
+.btn a {
+    color: white;
+    text-decoration: none;  
+}
+/* ===========login.html=================== */
+
+.login h2 {
+    text-align: center;
+    color: black;
+}
+
+/* ===========signup.html============ */
+
+.signup h2 {
+    color: black;
+    text-align: center;
+}

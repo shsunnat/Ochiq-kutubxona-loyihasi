@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- ===========================HOME PAGE BOOK VIEW(START)========================== -->
+<div class="top"></div>
+{% for form in object_list%}
+<div class="container">
+    <div class="book-view">
+    <a href="{% url 'post_detail' form.pk %}" class="image"><img src="{{form.kitob_muqovasi.url}}" width='75px'></a>
+    <a href="{% url 'post_detail' form.pk %}"><p>{{form.kitob_nomi}}</p></a>
+    <p>kitob shakli: {{form.kitob_shakli}}</p>
+    <p>Yil: {{form.yil}}</p>
+    </div>
+</div>
+<br>
+{%endfor%}
+<!-- ===========================HOME PAGE BOOK VIEW(END)========================== -->
+
+
+<!-- =============================PAGINATION(START)============================== -->
+<div class="container pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; birinchi</a>
+            <a href="?page={{ page_obj.previous_page_number }}">oldingi</a>
+        {% endif %}
+
+        <span class="current">
+            Bet {{ page_obj.number }} ning {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">keyingi</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">oxirgi &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+<!-- =============================PAGINATION(END)============================== -->
+
+{% endblock content %}
